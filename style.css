@@ -1,0 +1,160 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: 'Segoe UI', Helvetica, sans-serif, Georgia;
+    background-color: #455A64;
+}
+.look{
+    background-color: #1A237E;
+    width: 100%;
+    height: 6em;
+}
+.main{
+    background-color: white !important;
+    height: 618px;
+    width: 94%;
+    margin-top: -73px;
+    box-shadow: 0px 4px 4px gray;
+}
+.name{
+    font-size: 20px;
+    text-shadow: 1px 2px 2px black;
+    color: #1A237E;
+}
+.r1{
+    border-radius: 20px;
+}
+.others img{
+    height: 50px;
+    width: 50px;
+}
+.Identity{
+    font-weight: 640;
+}
+.text{
+    font-size: 13px;
+    line-height: 17px;
+    color: gray;
+}
+.chat-pic img{
+    height: 50px;
+    width: 50px;
+}
+.chat-icons i{
+    padding: 10px;
+    margin-top: 3px;
+    font-size: 22px;
+    color: gray;
+}
+div i.fa-smile-o, div i.fa-microphone{
+    font-size: 30px;
+    color:gray;
+    margin-top: 3px;
+}
+.texting{
+    border-radius: 20px;
+}
+
+div.wm-pic img{
+    height: 45px;
+    width: 45px;
+}
+.r-message{
+    display: inline-block;
+    border-radius: 20px;
+    padding: 15px;
+    background-color:#1A237E ;
+    color: white;
+}
+.s-message{
+    display: inline-block;
+    border-radius: 20px;
+    padding: 15px;
+    background-color: #B71C1C ;
+    color: white;
+}
+.r-time{
+    color: yellow;
+    margin-left: 13px;
+    margin-bottom: 12px;
+    font-size: small;
+    opacity: 1;
+}
+.s-time{
+    color: yellow;
+    margin-left: 13px;
+    margin-top: 10px;
+    font-size: small;
+    opacity: 0.7;
+}
+.card{
+    height: 94vh;
+}
+.card-body , .more{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+span i.v2{
+    font-size: 20px;
+    color: gray;
+    padding: 7px;
+}
+.dropdown-toggle::before{
+    display: none !important;
+
+}
+.card-body{
+    background-color: #D7CCC8;
+}
+.by{
+    background-color: black;
+}
+.by li{
+    color: yellow !important;
+    background-color:#1A237E !important ;
+}
+.starting{
+    background-color: #9E9E9E;
+    width: 100%;
+    height: 100%;
+    z-index: +1;
+}
+.big{
+    box-shadow: 3px 3px 3px black;
+    border-radius: 10px;
+}
+.card-footer{
+    background-color: black;
+}
+.ch2{
+    background-color: black;
+    color: yellow;
+    opacity: 0.7;
+}
+.more li{
+    background-color: black;
+    opacity: 0.7;
+    color: yellow;
+}
+.more li:hover{
+    background-color:#455A64;
+    opacity: 0.7;
+    color: yellow;
+}
+.btn-primary{
+    color: yellow !important;
+    background-color: red !important;
+    box-shadow: 2px 2px 2px black !important;  
+}
+.s-heading{
+    margin-top: 10px;
+    text-shadow: 2px 2px 2px black;
+    margin-bottom: 10px;
+}
+p.r-message , p.s-message{
+    box-shadow: 2px 2px 1px black;
+}

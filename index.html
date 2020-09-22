@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatApp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCSuwVG_rALmuN0O32l2RiU5ximB9yeKeY",
+            authDomain: "chatapp-5478b.firebaseapp.com",
+            databaseURL: "https://chatapp-5478b.firebaseio.com",
+            projectId: "chatapp-5478b",
+            storageBucket: "chatapp-5478b.appspot.com",
+            messagingSenderId: "52067453776",
+            appId: "1:52067453776:web:4825a13ed2132593fe7a55",
+            measurementId: "G-KBFHTBBN2B"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+</head>
+
+<body>
+    <div class="look"></div>
+    <div class="container-fluid main p-0">
+        <div class="row big">
+            <div class="contacts col-md-4 pr-0 pl-0 d-none d-md-block" id="contacts">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row p-1">
+                            <div class="col-1 d-md-none">
+                                <i class="fa fa-arrow-left d-md-none" style="cursor: pointer;"
+                                    onclick="goStarter()"></i>
+                            </div>
+                            <div class="col-9 name">
+                                <h5>ChatApp</h5>
+                            </div>
+                            <div class="col-2">
+                                <div class="dropleft" style="float: right;">
+                                    <span class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-ellipsis-v v2" style="cursor: pointer; float: right;"></i>
+                                    </span>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item" id="firstIn" onclick="showFriendList()" data-toggle="modal"
+                                            data-target="#modalFriendList">New Chat</a>
+                                        <a href="#" class="dropdown-item" id="p1" onclick="signIn()">Sign In</a>
+                                        <a href="#" class="dropdown-item" id="p2" style="display: none;"
+                                            onclick="signOut()">Sign Out</a>
+                                    </div>
+                                    <div class="modal fade" id="modalFriendList">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        Friend List
+                                                        <span class="close" data-dismiss="modal"
+                                                            style="cursor: pointer;">&times;
+                                                        </span>
+                                                    </div>
+                                                    <div class="card-body by">
+                                                        <ul class="list-group list-group-flush friendList"
+                                                            id="friendList">
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="list-group list-group-flush more" id="contactsList">
+                        
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="chattings col-md-8 pl-0 pr-0">
+                <div class="card" id="chat-box" style="display: none;">
+                    <div class="card-header ch2">
+                        <div class="row">
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                                <i class="fa fa-arrow-left mt-3 d-md-none" style="cursor: pointer;"
+                                    onclick="gettingContacts()"></i>
+                            </div>
+                            
+                            <div class="col-5 col-sm-5 col-md-5 col-lg-7 left">
+                                <div class="Identity" id="identity"></div>
+                                <div class="text" id="id-text">Last seen .......</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" id="card-body">
+                    
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-2 col sm-2 col-md-1">
+                                <i class="fa fa-smile-o"></i>
+                            </div>
+                            <div class="col-8 col-sm-8 col-md-10">
+                                <input type="text" placeholder="Type a message"
+                                    class="form-control texting" id="texting">
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-1">
+                                <i class="fa fa-microphone" aria-hidden="true"></i>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="starting text-center" id="starting">
+                    <img src="img/chatting.jfif" class="mt-5" alt="">
+                    <h2>SignIn to get connected with your friends</h2>
+                    <h5 onclick="gettingContacts()" class="d-md-none" style="cursor: pointer;"><u>New Chat</u></h5>
+                    <button onclick="signIn()" class="btn btn-primary">Sign In</button>
+                    <button onclick="signOut()" class="btn btn-primary">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- <= SCRIPTS => -->
+
+    <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
